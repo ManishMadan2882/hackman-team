@@ -3,7 +3,7 @@ require('dotenv').config();
 const {postSchema, posts} = require('./src/schema');
 const express = require('express')
 const app = express();
-
+app.use(express.json());
 app.post('/submit',async (req,res)=>{
    const {name,title,description} = req.body;
    const newbie = new postSchema({
