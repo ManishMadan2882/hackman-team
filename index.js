@@ -1,12 +1,12 @@
 const port = 5500;
 require('dotenv').config();
-const {postSchema, posts} = require('./src/schema');
+const {posts} = require('./src/schema');
 const express = require('express')
 const app = express();
-app.use(express.json());
+app.use(express.json())
 app.post('/submit',async (req,res)=>{
    const {name,title,description} = req.body;
-   const newbie = new postSchema({
+   const newbie = new posts({
     name:name,
     title:title,
     description:description
@@ -19,12 +19,12 @@ app.post('/submit',async (req,res)=>{
 app.get('/posts',async (req,res)=>{
     try  
    {
-   const posts = await postSchema.find();
-   res.status(200).json(posts)
+   const postData = await posts.find();
+   res.status(200).json(postData)
    }
    catch(err)
    {
-    res.status(500).json({msg : 'Something unexpected occured'})
+    res.status(500).json({msg : 'Something unexpected occured'+err})
    }
 })
 
