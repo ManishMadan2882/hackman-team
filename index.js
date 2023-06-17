@@ -20,6 +20,9 @@ app.get('/posts',async (req,res)=>{
     try  
    {
    const postData = await posts.find();
+   postData.sort((obj1,obj2)=>{
+      return (obj2.time-obj1.time)
+   })
    res.status(200).json(postData)
    }
    catch(err)
