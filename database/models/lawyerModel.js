@@ -33,7 +33,7 @@ const lawyerSchema = new mongoose.Schema({
         type:Number,
     },
     contact:{
-        type:Number,
+        type:String,
         required:true
     },
     avatar:{
@@ -48,6 +48,10 @@ const lawyerSchema = new mongoose.Schema({
     },
     desc:{
         type:String
+    },
+    rating:{
+        type:Number,
+        default:0
     },
     createdAt:{
         type:Date,
