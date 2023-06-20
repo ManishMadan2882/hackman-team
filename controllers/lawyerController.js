@@ -1,4 +1,5 @@
 const Lawyer = require("../database/models/lawyerModel");
+const ApiFeatures = require("../utils/ApiFeatures");
 
 //Register a lawyer 
 exports.registerLawyer = async(req,res,next)=>{
@@ -31,7 +32,9 @@ exports.getLawyerDetails = async(req,res,next)=>{
 
 //Get All lawyers
 exports.getAllLawyers = async(req,res,next)=>{
-    const lawyers  = await Lawyer.find();
+
+    const  apiFeatures = new ApiFeatures(Lawyer.find(),req.query).search();
+    const lawyers  = await apiFeatures.query;
 
     res.status(200).json({
         success:true,
