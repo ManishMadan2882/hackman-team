@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const lawyerSchema = new mongoose.Schema({
     name:{
@@ -54,8 +55,8 @@ const lawyerSchema = new mongoose.Schema({
         default:0
     },
     createdAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        default:moment().format('DD-MM-YYYY')
     }
 });
 

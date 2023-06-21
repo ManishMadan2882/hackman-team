@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const postSchema = new mongoose.Schema({
     title:{
@@ -22,8 +23,8 @@ const postSchema = new mongoose.Schema({
         }
     ],
     createdAt : {
-        type : Date,
-        default : Date.now
+        type : String,
+        default : moment().format('DD-MM-YYYY HH:mm')
     },
     user:{
         type:mongoose.Schema.ObjectId,
@@ -31,18 +32,25 @@ const postSchema = new mongoose.Schema({
         required:true
     },
     comment:[{
+        user:{
+            type:mongoose.Schema.ObjectId,
+            ref:"User"
+        },
         lawyer:{
             type:mongoose.Schema.ObjectId,
             ref: "Lawyer",
-            required:true
+        },
+        isLawyer:{
+            type:Boolean,
+            default:false
         },
         commentDesc:{
             type:String,
             required:[true,"Please Enter the comment"]
         },
         createdAt:{
-            type:Date,
-            default:Date.now
+            type:String,
+            default:moment().format('DD-MM-YYYY HH:mm')
         }
     }
     ],
