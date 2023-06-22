@@ -11,7 +11,7 @@ node index
 ```
 ## Routes
 
-### LAWYERS
+### 1. LAWYERS
 #### GET '/api/v1/lawyers' : 
 * Responds as {success:true,lawyers:Array}
 
@@ -22,7 +22,7 @@ node index
 * Send {name,address,city,regNo,cases,courts,experience,contact,desc,email} as Request body
 * Responds as {success:true, lawyer:Object}
 
-### USERS
+### 2. USERS
 
 #### GET '/api/v1/users' 
 * Responds as {success:true,users:Array}
@@ -34,7 +34,7 @@ node index
 * Send {name,email,contact,role} as Request body
 * Responds as {success:true, user:Object}
 
-### POSTS
+### 3. POSTS
 
 #### POST /api/v1/post/create
 * Send {title,desc,user} as the Request body
