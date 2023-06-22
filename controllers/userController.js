@@ -2,14 +2,11 @@ let User =  require("../database/models/userModel");
 
 //register a user
 exports.registerUser = async (req,res,next)=>{
-    const {name,email,contact,role} = req.body;
-
+    const {name,email,contact,role,url} = req.body;
+    console.log(url);
     const user = await User.create({
         name,email,contact,role,
-        avatar:{
-            public_id:"TEST id",
-            url:"https://cdn.icon-icons.com/icons2/2468/PNG/512/user_kids_avatar_user_profile_icon_149314.png"
-        }
+        url:url
         
     })
 

@@ -3,14 +3,10 @@ const ApiFeatures = require("../utils/ApiFeatures");
 
 //Register a lawyer 
 exports.registerLawyer = async(req,res,next)=>{
-    const {name,address,city,regNo,cases,courts,experience,contact,desc,email} = req.body;
-
+    const {name,address,city,regNo,cases,courts,experience,contact,desc,email,url} = req.body;
+    console.log(url);
     const lawyer = await Lawyer.create({
-        name,address,city,regNo,cases,courts,contact,experience,desc,email,
-        avatar:{
-            public_id:"TEST id",
-            url:"https://cdn.vectorstock.com/i/1000x1000/50/27/lawyer-icon-male-user-person-profile-avatar-vector-20905027.webp"
-        }
+        name,address,city,regNo,cases,courts,contact,experience,desc,email,url
     });
 
     res.status(200).json({

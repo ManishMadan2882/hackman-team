@@ -12,3 +12,9 @@ useUnifiedTopology: true})
     console.log("Connected to Database");
 })
 
+// mongoose.connect("mongodb+srv://manishmadan101:QqXwEgB7VhIzPSsh@cluster0.wtpmj5h.mongodb.net/hackman-2023",{ useNewUrlParser: true,
+// useUnifiedTopology: true})
+// .then(()=>{
+//     console.log("Connected to Database");
+// })
+

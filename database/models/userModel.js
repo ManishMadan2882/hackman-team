@@ -12,18 +12,12 @@ const userSchema = new mongoose.Schema({
         unique:true
     },
     contact:{
-        type:Number,
+        type:String,
         required:true
     },
-    avatar:{
-        public_id:{
-            type:String,
-            required:true
-        },
-        url:{
-            type:String,
-            required:true
-        }
+    url:{
+        type:String,
+        required:true
     },
     createdAt:{
         type:String,
