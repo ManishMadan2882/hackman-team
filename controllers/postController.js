@@ -61,8 +61,8 @@ exports.addComment = async(req,res,next)=>{
     if(userEmail){
         const post = await Post.findById(postId);
 
-    const isUser = await User.findOne(userEmail);
-    const islawyer = await Lawyer.findOne(userEmail);
+    const isUser = await User.findOne({email:userEmail});
+    const islawyer = await Lawyer.findOne({email:userEmail});
     let comment;
     if(isUser){
          comment = {
