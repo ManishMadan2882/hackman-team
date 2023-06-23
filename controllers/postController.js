@@ -67,14 +67,14 @@ exports.addComment = async(req,res,next)=>{
     if(isUser){
          comment = {
             commentDesc:commentDesc,
-            user:user
+            user:isUser
         }
     }
 
     else if(islawyer){
          comment = {
             commentDesc:commentDesc,
-            lawyer:user,
+            lawyer:isLawyer,
             isLawyer:true
         }
     }
