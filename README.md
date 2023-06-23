@@ -32,17 +32,19 @@ node index
 
 #### POST '/api/v1/lawyer/register' 
 * Send {name,email,contact,role} as Request body
-* Responds as {success:true, user:Object}
+* Responds as {success:true, msg:"comment added successfully"}
+* Responds as
 
 ### 3. POSTS
 
 #### POST /api/v1/post/create
 * Send {title,desc,user} as the Request body
-* Responds with {success:true,post:Object}
+* Responds with {success:true,message:"Comment added successfully"}
+* Responds as {"error": "User Id required"} in case of missing body data
 #### GET /api/v1/posts
 * Responds with {success:true,posts:Array}
 #### GET /api/v1/post/:id
 * Accepts the post _id from Request Parameters and responds with {success:true,post:Object}
 #### POST /api/v1/post/addComment
-* Request body contains  {postId,commentDesc,lawyer}
+* Request body contains  {postId,commentDesc,userEmail}
 * Responds with {success:true,message:"Comment Added Successfully"}
