@@ -28,7 +28,7 @@ exports.getAllUsers = async(req,res,next)=>{
 
 //get User Details --protected Route
 exports.getUserDetails = async(req,res,next)=>{
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne({email:req.body.email});
 
     res.status(200).json({
         success:true,
