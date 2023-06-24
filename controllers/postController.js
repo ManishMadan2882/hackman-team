@@ -35,10 +35,15 @@ exports.getAllPost =  async(req,res,next)=>{
 
 //Get Single Post
 exports.getSinglePost = async(req,res,next)=>{
-
+    console.log(req.params.id);
     const post = await Post.findById(req.params.id).populate('user','name url contact email createdAt role')
-    .populate('comment.lawyer','name url')
-    .populate('comment.user','name url');
+    .populate({
+        path: 'comment',
+        populate: [
+            { path: 'lawyer', select: 'name url' },
+            { path: 'user', select: 'name url' }
+        ]
+    });
 
     if(post){
         res.status(200).json({
@@ -96,6 +101,7 @@ exports.addComment = async(req,res,next)=>{
     
 };
 
+//Delete A post
 exports.deletePost = async(req,res,next)=>{
     const post = await Post.findById(req.params.id);
 
@@ -108,3 +114,17 @@ exports.deletePost = async(req,res,next)=>{
 
 
 }
+
+//Like a comment
+exports.likeAPost = async(req,res,next)=>{
+    const{email} = req.body;
+    const post = await Post.findById(req.params.id);
+        post.likes.user.push(email);
+        post.likes.noOFLikes = post.likes.noOFLikes +1;
+        await post.save();
+        res.status(200).json({
+            success:true,
+            message:"Liked",
+            post
+        });
+};

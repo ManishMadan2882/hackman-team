@@ -51,12 +51,15 @@ const postSchema = new mongoose.Schema({
         createdAt:{
             type:String,
             default:moment().format('DD-MM-YYYY HH:mm')
-        }
+        },
     }
     ],
-    noOfLikes:{
-        type:Number,
-        default:0
+    likes:{
+        noOFLikes:{
+            type:Number,
+            default:0
+        },
+        user:[String]
     }
 
 })
