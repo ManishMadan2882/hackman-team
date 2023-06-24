@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.route("/user/register").post(registerUser);
 router.route("/users").get(getAllUsers);
-router.route("/user/find").get(getUserDetails);
+router.route("/user/find/:email").get(getUserDetails);
 
 module.exports = router;
