@@ -26,7 +26,8 @@ const userSchema = new mongoose.Schema({
     role:{
         type:String,
         default:"User"
-    }
+    },
+    contacts:[String]
 });
 
 module.exports = mongoose.model("User",userSchema);

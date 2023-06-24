@@ -1,4 +1,5 @@
-let User =  require("../database/models/userModel");
+const User =  require("../database/models/userModel");
+const Lawyer = require("../database/models/lawyerModel");
 
 //register a user
 exports.registerUser = async (req,res,next)=>{
@@ -39,5 +40,46 @@ exports.getUserDetails = async(req,res,next)=>{
     res.status(200).json({
         success:true,
         user
+    })
+};
+
+//Update a user
+exports.updateUser = async(req,res,next)=>{
+    const {email,newName,newContact} = req.body;
+    const user = await User.findOne({email:email});
+
+    user.name=newName;
+    user.contact = newContact;
+
+    await user.save();
+    res.status(200).json({
+        success:true,
+        user
+    })
+};
+
+//Delete Profile
+exports.deleteUser = async(req,res,next)=>{
+    const {email} = req.body;
+    const user = await User.deleteOne({email:email});
+
+    res.status(200).json({
+        success:true,
+        message:"user Deleted Successfully."
+    })
+};
+
+//update contact
+exports.updateContact = async(req,res,next)=>{
+    const{lawyerEmail,userEmail}=req.body;
+    const user = await User.findOne({email:userEmail});
+    user.contacts.push(lawyerEmail);
+    const lawyer = await Lawyer.findOne({email:lawyerEmail});
+    lawyer.contacts.push(userEmail);
+    await user.save();
+    await lawyer.save();
+    res.status(200).json({
+        success:true,
+        message:"Added Contact"
     })
 };

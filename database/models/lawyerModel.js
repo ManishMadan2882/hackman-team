@@ -51,6 +51,11 @@ const lawyerSchema = new mongoose.Schema({
     createdAt:{
         type:String,
         default:moment().format('DD-MM-YYYY')
+    },
+    contacts:[String],
+    calendly:{
+        type:String,
+        required:true
     }
 });
 

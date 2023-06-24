@@ -3,10 +3,10 @@ const ApiFeatures = require("../utils/ApiFeatures");
 
 //Register a lawyer 
 exports.registerLawyer = async(req,res,next)=>{
-    const {name,address,city,regNo,cases,courts,experience,contact,desc,email,url} = req.body;
+    const {name,address,city,regNo,cases,courts,experience,contact,desc,email,url,calendly} = req.body;
     console.log(url);
     const lawyer = await Lawyer.create({
-        name,address,city,regNo,cases,courts,contact,experience,desc,email,url
+        name,address,city,regNo,cases,courts,contact,experience,desc,email,url,calendly
     });
 
     res.status(200).json({
