@@ -35,7 +35,6 @@ exports.getAllPost =  async(req,res,next)=>{
 
 //Get Single Post
 exports.getSinglePost = async(req,res,next)=>{
-    console.log(req.params.id);
     const post = await Post.findById(req.params.id).populate('user','name url contact email createdAt role')
     .populate({
         path: 'comment',
@@ -46,7 +45,7 @@ exports.getSinglePost = async(req,res,next)=>{
     });
 
     if(post){
-        res.status(200).json({
+       return  res.status(200).json({
             success:true,
             post
         })
